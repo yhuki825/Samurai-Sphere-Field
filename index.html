@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+================================================================
+ 合同会社サムライスフィールド ブランドサイト（デザイン案）
+ コンセプト：「間合い」
+   社名の SAMURAI（武士）× SPHERE / FIELD（圏・場）から着想。
+   事業とお客様のあいだにある距離＝間合いを読み、
+   WEB・EC・SNSの一手で確実に届ける会社として表現。
+ 配色：玉鋼（刀身の鋼）・刃文の銀・鍔の真鍮
+ デプロイ：Cloudflare Pages（Direct Upload）にこのファイル1枚でそのまま配置可能
+   外部依存は Google Fonts と Unsplash 画像のみ（画像読込失敗時はCSS代替表示）
+================================================================
+ 【要確認チェックリスト】（公開前にご確認ください）
+ □ 1. 各サービスの具体的な提供内容（本文の項目はデザイン用の仮置き）
+ □ 2. 代表者の役職表記（合同会社のため「代表社員」と仮置き）
+ □ 3. 代表メッセージ本文（下書きです。代表者ご本人の確認・修正が必須）
+ □ 4. 設立年月日・資本金・従業員数など（未確認のため非表示）
+ □ 5. ECサイト運営：自社で商品を販売する場合は「特定商取引法に基づく表記」ページが必要
+ □ 6. SNS代行・広告支援：景品表示法（ステルスマーケティング規制・2023年10月施行）への
+       対応方針（PR表記の徹底など）をサイト内で示すか
+ □ 7. プライバシーポリシーページの有無（アクセス解析ツール導入時は推奨）
+ □ 8. 画像はUnsplashのフリー素材（仮）。実際の業務写真への差し替え推奨
+ □ 9. 実績・数値は根拠が確認できるまで掲載していません
+ □ 10. ドメイン確定後、canonical / OGP の URL を設定
+================================================================
+-->
+<title>合同会社サムライスフィールド｜WEBマーケティング・EC運営・SNS運用</title>
+<meta name="description" content="合同会社サムライスフィールドは、WEBマーケティング支援、ECサイト運営・コンサルティング、SNS代行サービスを通じて、事業とお客様の間合いを読み、売上につながる一手を共に打ちます。">
+<meta property="og:title" content="合同会社サムライスフィールド">
+<meta property="og:description" content="間合いを読み、一太刀で届ける。WEBマーケティング・EC運営・SNS運用。">
+<meta property="og:type" content="website">
+<!-- 要確認：ドメイン確定後に og:url / og:image / canonical を追加 -->
+<meta name="theme-color" content="#1B2026">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B2026'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23C3A36A' stroke-width='3'/%3E%3Cpath d='M12 50 L52 14' stroke='%23DDE2E6' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tamahagane:#1B2026;   /* 玉鋼：ベース */
+  --jigane:#252C34;       /* 地鉄：面 */
+  --jigane-2:#2E3740;
+  --hamon:#DDE2E6;        /* 刃文：本文・主要線 */
+  --toishi:#8E98A1;       /* 砥石：補助テキスト */
+  --tsuba:#C3A36A;        /* 鍔の真鍮：アクセント */
+  --ai:#4A6A85;           /* 藍鉄：図の補助色 */
+  --line:rgba(221,226,230,.14);
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --latin:"Cormorant Garamond","Times New Roman",serif;
+  --wrap:min(1180px, 100% - 48px);
+  --header-h:72px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h)}
+body{
+  margin:0;background:var(--tamahagane);color:var(--hamon);
+  font-family:var(--sans);font-size:16px;line-height:1.95;letter-spacing:.04em;
+  -webkit-font-smoothing:antialiased;
+  word-break:auto-phrase;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,p{text-wrap:pretty}
+.nw{display:inline-block}
+.wrap{width:var(--wrap);margin-inline:auto}
+:focus-visible{outline:2px solid var(--tsuba);outline-offset:4px;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--tsuba);color:var(--tamahagane);padding:10px 16px;text-decoration:none;font-weight:700;transition:top .2s}
+.skip:focus{top:16px}
+
+/* ---------- Header ---------- */
+.header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:100;transition:background .35s, border-color .35s;border-bottom:1px solid transparent}
+.header.is-scrolled{background:rgba(27,32,38,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.header__in{width:var(--wrap);margin-inline:auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand__txt{display:flex;flex-direction:column;line-height:1.25}
+.brand__en{font-family:var(--latin);font-style:italic;font-size:1.3rem;letter-spacing:.02em}
+.brand__ja{font-size:.66rem;color:var(--toishi);letter-spacing:.12em}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:34px}
+.nav a{text-decoration:none;font-size:.88rem;position:relative;padding-block:6px}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--tsuba);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--hamon);width:46px;height:46px;border-radius:50%;cursor:pointer;position:relative}
+.menu-btn span{position:absolute;left:13px;right:13px;height:1px;background:currentColor;transition:transform .3s, opacity .3s}
+.menu-btn span:nth-child(1){top:18px}
+.menu-btn span:nth-child(2){top:27px;left:19px}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(4.5px) rotate(-35deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){left:13px;transform:translateY(-4.5px) rotate(35deg)}
+
+/* ---------- 抜刀レール（スクロール進捗） ---------- */
+.rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:90;height:58vh;width:14px;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.rail__tsuka{width:8px;height:44px;border-radius:3px 3px 1px 1px;background:
+  repeating-linear-gradient(45deg, transparent 0 3px, rgba(195,163,106,.55) 3px 4px),
+  repeating-linear-gradient(-45deg, transparent 0 3px, rgba(195,163,106,.55) 3px 4px),
+  #11151a;border:1px solid rgba(195,163,106,.4)}
+.rail__tsuba{width:14px;height:4px;border-radius:2px;background:var(--tsuba);margin:2px 0}
+.rail__saya{position:relative;flex:1;width:6px;border:1px solid var(--line);border-radius:1px 1px 4px 4px;overflow:hidden}
+.rail__blade{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:top;transform:scaleY(0);
+  background:linear-gradient(90deg,#9aa4ad 0%,#f2f5f7 45%,#b9c1c8 60%,#e7ebee 100%)}
+.rail__label{margin-top:10px;writing-mode:vertical-rl;font-family:var(--serif);font-size:.72rem;color:var(--toishi);letter-spacing:.3em}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;overflow:hidden;display:grid;align-items:end}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 30% 110%, rgba(27,32,38,.95) 10%, transparent 60%)}
+.hero__in{position:relative;z-index:2;width:var(--wrap);margin-inline:auto;padding:calc(var(--header-h) + 40px) 0 72px;display:grid;grid-template-columns:1fr auto;gap:40px;min-height:100svh}
+.hero__copy{grid-column:2;grid-row:1;align-self:start;writing-mode:vertical-rl;font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,4.4vw,3.9rem);line-height:1.6;letter-spacing:.18em;margin:0;text-shadow:0 2px 30px rgba(27,32,38,.7)}
+.hero__copy span{display:block}
+.hero__copy span + span{margin-top:3.2em}
+.hero__foot{grid-column:1;grid-row:1;align-self:end;max-width:30rem}
+.hero__lead{font-size:1rem;color:var(--hamon);margin:0 0 28px}
+.hero__fields{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.hero__fields li{border:1px solid rgba(195,163,106,.5);padding:6px 16px;border-radius:999px;font-size:.84rem;background:rgba(27,32,38,.5)}
+.hero__scroll{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);width:1px;height:48px;background:linear-gradient(var(--tsuba),transparent)}
+
+/* ---------- Section common ---------- */
+.sec{padding:clamp(96px,13vw,168px) 0;position:relative}
+.sec-head{display:flex;align-items:flex-start;gap:clamp(20px,3vw,40px);margin-bottom:clamp(48px,6vw,80px)}
+.sec-glyph{font-family:var(--serif);font-weight:800;font-size:clamp(4rem,9vw,7.5rem);line-height:.9;color:transparent;-webkit-text-stroke:1px rgba(195,163,106,.7);flex:none}
+.sec-title{font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.5;letter-spacing:.08em;margin:0 0 14px}
+.sec-desc{margin:0;color:var(--toishi);max-width:36rem}
+
+.reveal{opacity:0;transition:opacity 1s ease}
+.reveal.is-in{opacity:1}
+
+/* ---------- Photo w/ fallback ---------- */
+.ph{margin:0;position:relative;overflow:hidden;background:var(--jigane)}
+.ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) contrast(1.05)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(27,32,38,.55));pointer-events:none}
+.ph.is-fallback{background:
+  radial-gradient(circle at 70% 30%, rgba(195,163,106,.18), transparent 45%),
+  repeating-radial-gradient(ellipse at 0% 120%, transparent 0 22px, rgba(221,226,230,.06) 22px 23px),
+  linear-gradient(135deg,var(--jigane-2),var(--tamahagane))}
+.ph.is-fallback img{display:none}
+.ph.is-fallback::before{content:attr(data-alt);position:absolute;left:20px;bottom:18px;z-index:1;font-size:.78rem;color:var(--toishi)}
+
+/* ---------- Concept ---------- */
+.concept__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,96px);align-items:center}
+.concept__body p{margin:0 0 1.6em;font-family:var(--serif);font-size:1.06rem;line-height:2.25}
+.concept__body p:last-child{margin-bottom:0}
+.concept__ph{aspect-ratio:4/5}
+.concept__ph figcaption{position:absolute;right:0;top:0;z-index:2;writing-mode:vertical-rl;background:var(--tamahagane);padding:18px 12px;font-family:var(--serif);font-size:.86rem;letter-spacing:.25em}
+
+/* ---------- Services ---------- */
+.services{background:var(--jigane)}
+.svc{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,3vw,40px);align-items:center;padding-block:clamp(40px,5vw,64px);border-top:1px solid var(--line)}
+.svc:last-of-type{border-bottom:1px solid var(--line)}
+.svc__ph{grid-column:1 / span 6;aspect-ratio:16/11}
+.svc__txt{grid-column:8 / span 5}
+.svc:nth-of-type(even) .svc__ph{grid-column:7 / span 6;order:2}
+.svc:nth-of-type(even) .svc__txt{grid-column:1 / span 5;order:1}
+.svc__mark{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.svc__kanji{width:52px;height:52px;border:1px solid var(--tsuba);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--tsuba)}
+.svc__cat{font-size:.86rem;color:var(--toishi)}
+.svc__title{font-family:var(--serif);font-size:clamp(1.45rem,2.4vw,1.9rem);line-height:1.5;margin:0 0 16px;letter-spacing:.06em}
+.svc__lead{margin:0 0 22px}
+.svc__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.svc__list li{padding:10px 0 10px 18px;border-top:1px solid var(--line);font-size:.9rem;position:relative}
+.svc__list li::before{content:"";position:absolute;left:0;top:1.3em;width:8px;height:1px;background:var(--tsuba)}
+.svc__for{margin:20px 0 0;font-size:.88rem;color:var(--toishi)}
+
+/* ---------- 間合い図（担当範囲マップ） ---------- */
+.map__scroll{overflow-x:auto;padding-bottom:8px}
+.map{min-width:760px;display:grid;grid-template-columns:120px repeat(5,1fr);position:relative}
+.map__axis{grid-column:2 / -1;display:grid;grid-template-columns:repeat(5,1fr);position:relative;padding:0 0 26px}
+.map__axis::before{content:"";position:absolute;left:0;right:0;bottom:12px;height:1px;background:var(--hamon)}
+.map__stage{text-align:center;font-family:var(--serif);font-size:1.02rem;position:relative}
+.map__stage::after{content:"";position:absolute;left:50%;bottom:-19px;width:7px;height:7px;border-radius:50%;background:var(--tamahagane);border:1px solid var(--hamon);transform:translateX(-50%)}
+.map__ends{grid-column:1 / -1;display:flex;justify-content:space-between;padding-left:120px;margin-bottom:14px;font-size:.82rem;color:var(--toishi)}
+.map__row{display:contents}
+.map__name{grid-column:1;padding:16px 12px 16px 0;font-size:.86rem;display:flex;align-items:center;gap:8px;border-top:1px solid var(--line)}
+.map__name b{font-family:var(--serif);color:var(--tsuba);font-size:1.1rem}
+.map__track{grid-column:2 / -1;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;border-top:1px solid var(--line)}
+.map__bar{height:10px;border-radius:5px;margin:0 8%;transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.2,.7,.1,1)}
+.map__bar--web{grid-column:1 / span 3;background:linear-gradient(90deg,var(--ai),#7f9cb3)}
+.map__bar--ec{grid-column:3 / span 3;background:linear-gradient(90deg,#8a7446,var(--tsuba))}
+.map__bar--sns{grid-column:1 / span 5;background:repeating-linear-gradient(90deg,var(--hamon) 0 18px,transparent 18px 26px)}
+.map.is-in .map__bar{transform:scaleX(1)}
+.map.is-in .map__bar--ec{transition-delay:.25s}
+.map.is-in .map__bar--sns{transition-delay:.5s}
+.map__note{margin:32px 0 0;max-width:40rem}
+
+/* ---------- Process ---------- */
+.process{background:var(--jigane)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:34px;height:1px;background:linear-gradient(90deg,var(--tsuba),var(--hamon) 60%,var(--tsuba))}
+.step{padding:0 24px 0 0;position:relative}
+.step__no{font-family:var(--latin);font-size:1.3rem;display:inline-grid;place-items:center;width:68px;height:68px;border-radius:50%;background:var(--jigane);border:1px solid var(--tsuba);position:relative;z-index:1}
+.step__verb{font-family:var(--serif);font-weight:700;font-size:1.55rem;margin:22px 0 4px;letter-spacing:.12em}
+.step__what{font-size:.85rem;color:var(--tsuba);margin:0 0 12px}
+.step p{margin:0;font-size:.9rem;color:var(--toishi)}
+.steps__loop{margin:40px 0 0;font-family:var(--serif);font-size:.98rem}
+
+/* ---------- Message ---------- */
+.message__grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(40px,7vw,120px);align-items:start}
+.message__body{writing-mode:vertical-rl;font-family:var(--serif);font-size:1.04rem;line-height:2.35;letter-spacing:.14em;height:min(34rem,72vh);max-width:100%;overflow-x:auto;justify-self:end}
+.message__body p{margin:0 0 0 1.6em}
+.message__lead{font-size:1.5rem;font-weight:700;margin-left:2.4em!important}
+.message__sign{padding-top:3em;font-size:.95rem}
+.message__sign b{font-size:1.25rem;letter-spacing:.3em;margin-top:.8em;display:block}
+
+/* ---------- Company ---------- */
+.company{background:var(--jigane)}
+.profile{width:100%;border-collapse:collapse;max-width:880px}
+.profile th,.profile td{text-align:left;vertical-align:top;padding:22px 0;border-bottom:1px solid var(--line)}
+.profile tr:first-child th,.profile tr:first-child td{border-top:1px solid var(--line)}
+.profile th{width:11rem;font-weight:500;color:var(--toishi);font-size:.9rem;padding-right:24px}
+.profile ul{margin:0;padding:0;list-style:none}
+
+/* ---------- Footer ---------- */
+.footer{padding:64px 0 40px;border-top:1px solid var(--line)}
+.footer__in{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.footer__word{font-family:var(--latin);font-style:italic;font-size:clamp(2rem,5vw,3.6rem);line-height:1;margin:0 0 10px}
+.footer nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:.86rem}
+.footer nav a{text-decoration:none;color:var(--toishi)}
+.footer nav a:hover{color:var(--hamon)}
+.copy{margin:40px 0 0;font-size:.74rem;color:var(--toishi)}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px){
+  .nav{position:fixed;inset:0;background:rgba(27,32,38,.98);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .3s, visibility .3s}
+  .nav.is-open{opacity:1;visibility:visible}
+  .nav ul{flex-direction:column;align-items:center;gap:28px}
+  .nav a{font-family:var(--serif);font-size:1.3rem}
+  .menu-btn{display:block;z-index:110}
+  .concept__grid{grid-template-columns:1fr}
+  .concept__ph{aspect-ratio:16/10;order:-1}
+  .svc__ph,.svc:nth-of-type(even) .svc__ph{grid-column:1 / -1;order:0}
+  .svc__txt,.svc:nth-of-type(even) .svc__txt{grid-column:1 / -1;order:1}
+  .steps{grid-template-columns:1fr 1fr;gap:48px 0}
+  .steps::before{display:none}
+  .message__grid{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  :root{--wrap:calc(100% - 40px);--header-h:64px}
+  .rail{right:8px;height:44vh;width:10px}
+  .rail__label{display:none}
+  .hero__in{grid-template-columns:1fr;gap:28px}
+  .hero__copy{grid-column:1;grid-row:1;writing-mode:horizontal-tb;align-self:end;font-size:clamp(2rem,9vw,2.6rem);letter-spacing:.08em;line-height:1.5}
+  .hero__copy span + span{margin-top:.2em}
+  .hero__foot{grid-row:2}
+  .sec-head{flex-direction:column;gap:8px}
+  .sec-glyph{font-size:4rem}
+  .svc__list{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .message__body{writing-mode:horizontal-tb;height:auto;justify-self:stretch}
+  .message__body p{margin:0 0 1.4em}
+  .message__lead{margin-left:0!important}
+  .message__sign{padding-top:1em}
+  .profile th,.profile td{display:block;width:auto;padding:0}
+  .profile th{padding-top:18px;border-bottom:0!important}
+  .profile td{padding:4px 0 18px}
+  .profile tr:first-child td{border-top:0}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .reveal{opacity:1}
+  .map__bar{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+
+<header class="header" id="header">
+  <div class="header__in">
+    <a class="brand" href="#top" aria-label="合同会社サムライスフィールド トップへ">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21" fill="none" stroke="#C3A36A" stroke-width="1.6"/><circle cx="32" cy="32" r="13" fill="none" stroke="#8E98A1" stroke-width="1" stroke-dasharray="2 3"/><path d="M8 54 L56 10" stroke="#DDE2E6" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="brand__txt"><span class="brand__en">Samurai Sphere Field</span><span class="brand__ja">合同会社サムライスフィールド</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span></button>
+    <nav class="nav" id="gnav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#concept">間合い</a></li>
+        <li><a href="#services">事業内容</a></li>
+        <li><a href="#process">進め方</a></li>
+        <li><a href="#message">代表挨拶</a></li>
+        <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- 抜刀レール：スクロールに合わせて刀身が抜ける -->
+<div class="rail" aria-hidden="true">
+  <div class="rail__tsuka"></div>
+  <div class="rail__tsuba"></div>
+  <div class="rail__saya"><div class="rail__blade" id="blade"></div></div>
+  <div class="rail__label">抜刀</div>
+</div>
+
+<main id="main">
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top" aria-label="メインビジュアル">
+    <canvas id="sphere" aria-hidden="true"></canvas>
+    <div class="hero__in">
+      <h1 class="hero__copy">
+        <span>間合いを読み、</span>
+        <span>一太刀で届ける。</span>
+      </h1>
+      <div class="hero__foot">
+        <p class="hero__lead">事業とお客様のあいだにある、見えない距離。<br>サムライスフィールドは、その「間合い」を読み解き、<span class="nw">WEB・EC・SNSで</span><span class="nw">売上につながる一手を</span>共に打つ会社です。</p>
+        <ul class="hero__fields" aria-label="事業領域">
+          <li>WEBマーケティング支援</li>
+          <li>ECサイト運営・コンサルティング</li>
+          <li>SNS代行</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== CONCEPT ===== -->
+  <section class="sec concept" id="concept" data-sec>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-glyph" aria-hidden="true">間</div>
+        <div>
+          <h2 class="sec-title">届かないのは、<span class="nw">間合いがずれているから。</span></h2>
+          <p class="sec-desc">良い商品やサービスがあっても、伝える場所・言葉・タイミングがずれていれば、お客様には届きません。</p>
+        </div>
+      </div>
+      <div class="concept__grid">
+        <div class="concept__body reveal">
+          <p>剣の達人は、相手との距離を一瞬で見極め、踏み込むべき時にだけ踏み込むといいます。</p>
+          <p>商いも同じです。検索で探している人、ECで比べている人、SNSで何気なく眺めている人。お客様がいる場所と気持ちは、それぞれ違います。</p>
+          <p>私たちは数字と現場の声からその間合いを測り、打つべき施策を絞り込みます。闇雲に手数を増やすのではなく、<span class="nw">確かな一太刀を。</span>それがサムライスフィールドの流儀です。</p>
+        </div>
+        <figure class="ph concept__ph reveal" data-alt="打ち合わせのイメージ写真">
+          <!-- 要確認：フリー素材（Unsplash）。実際の打ち合わせ風景などへの差し替え推奨 -->
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=75" alt="ノートPCを囲んで打ち合わせをするチーム" loading="lazy" width="1000" height="1250" onerror="this.parentNode.classList.add('is-fallback')">
+          <figcaption>見極めてから、動く</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="sec services" id="services" data-sec>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-glyph" aria-hidden="true">技</div>
+        <div>
+          <h2 class="sec-title">三つの技で、<span class="nw">集客から販売まで。</span></h2>
+          <p class="sec-desc">見つけてもらう、買ってもらう、また選んでもらう。<br>必要な技を組み合わせてご提案します。</p>
+        </div>
+      </div>
+      <!-- 要確認：以下3サービスの提供項目・対象はデザイン用の仮置きです。実際の提供範囲に合わせて修正してください -->
+
+      <article class="svc reveal" aria-labelledby="svc-web">
+        <figure class="ph svc__ph" data-alt="アクセス解析のイメージ写真">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=75" alt="ノートPCに表示されたアクセス解析のグラフ" loading="lazy" width="1200" height="825" onerror="this.parentNode.classList.add('is-fallback')">
+        </figure>
+        <div class="svc__txt">
+          <div class="svc__mark"><span class="svc__kanji" aria-hidden="true">策</span><span class="svc__cat">WEBマーケティング支援・アドバイス</span></div>
+          <h3 class="svc__title" id="svc-web">集客の道筋を、<span class="nw">数字で描く。</span></h3>
+          <p class="svc__lead">アクセス状況や検索の傾向を読み解き、どこに力を注ぐべきかを明確にします。社内で動けるよう、施策の優先順位まで具体的にお伝えします。</p>
+          <ul class="svc__list">
+            <li>アクセス解析・現状診断</li>
+            <li>SEO・コンテンツ方針</li>
+            <li>WEB広告運用のアドバイス</li>
+            <li>目標数値（KPI）の設計</li>
+          </ul>
+          <p class="svc__for">ホームページはあるのに問い合わせや売上につながらない方へ。</p>
+        </div>
+      </article>
+
+      <article class="svc reveal" aria-labelledby="svc-ec">
+        <figure class="ph svc__ph" data-alt="オンラインショッピングのイメージ写真">
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=75" alt="ショッピングカートと配送用の箱" loading="lazy" width="1200" height="825" onerror="this.parentNode.classList.add('is-fallback')">
+        </figure>
+        <div class="svc__txt">
+          <div class="svc__mark"><span class="svc__kanji" aria-hidden="true">商</span><span class="svc__cat">ECサイト運営・コンサルティング</span></div>
+          <h3 class="svc__title" id="svc-ec">売れる店を、<span class="nw">日々の運営から育てる。</span></h3>
+          <p class="svc__lead">商品ページの見せ方から受注・在庫の回し方まで、ECの現場に入り込んで改善します。立ち上げ前のご相談から、既存ショップの立て直しまで対応します。</p>
+          <ul class="svc__list">
+            <li>商品ページ・写真の改善</li>
+            <li>自社EC・モールの運営代行</li>
+            <li>受注・在庫の運用設計</li>
+            <li>セール・販促の企画</li>
+          </ul>
+          <p class="svc__for">ネットショップを始めたい方、売上が伸び悩んでいる方へ。</p>
+          <!-- 要確認：ECサイトの運営代行・自社販売を行う場合、特定商取引法に基づく表記の整備が必要（ショップ側・自社側とも） -->
+        </div>
+      </article>
+
+      <article class="svc reveal" aria-labelledby="svc-sns">
+        <figure class="ph svc__ph" data-alt="SNS運用のイメージ写真">
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=75" alt="スマートフォンに並ぶSNSアプリのアイコン" loading="lazy" width="1200" height="825" onerror="this.parentNode.classList.add('is-fallback')">
+        </figure>
+        <div class="svc__txt">
+          <div class="svc__mark"><span class="svc__kanji" aria-hidden="true">響</span><span class="svc__cat">SNS代行サービス</span></div>
+          <h3 class="svc__title" id="svc-sns">発信を、<span class="nw">ファンとの対話に変える。</span></h3>
+          <p class="svc__lead">アカウントの方向性づくりから投稿の企画・制作、日々の運用までお任せいただけます。本業に集中しながら、ブランドの声を途切れさせません。</p>
+          <ul class="svc__list">
+            <li>アカウント設計・方針づくり</li>
+            <li>投稿の企画・制作</li>
+            <li>運用代行・コメント対応</li>
+            <li>数値レポートと改善提案</li>
+          </ul>
+          <p class="svc__for">SNSを始めたいが時間がない方、更新が止まっている方へ。</p>
+          <!-- 要確認：景品表示法のステルスマーケティング規制（2023年10月施行）への対応方針。インフルエンサー施策等を扱う場合はPR表記の徹底をサイト上で明示するか検討 -->
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== 間合い図 ===== -->
+  <section class="sec" id="field" aria-labelledby="field-title" data-sec>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-glyph" aria-hidden="true">圏</div>
+        <div>
+          <h2 class="sec-title" id="field-title">それぞれの技が受け持つ<span class="nw">間合い。</span></h2>
+          <p class="sec-desc">お客様が商品を知ってから、再び選んでくれるまで。<br>三つの事業がどの段階を担うかを表しました。</p>
+        </div>
+      </div>
+      <div class="map__scroll" tabindex="0" role="region" aria-label="事業ごとの担当範囲の図（横にスクロールできます）">
+        <div class="map" id="map">
+          <div class="map__ends"><span>事業から遠い</span><span>事業に近い</span></div>
+          <div aria-hidden="true" style="grid-column:1;grid-row:2"></div>
+          <div class="map__axis" style="grid-row:2">
+            <div class="map__stage">知る</div>
+            <div class="map__stage">興味をもつ</div>
+            <div class="map__stage">比べる</div>
+            <div class="map__stage">買う</div>
+            <div class="map__stage">また選ぶ</div>
+          </div>
+          <div class="map__row">
+            <div class="map__name"><b aria-hidden="true">策</b>WEB<span class="sr-only">マーケティング支援：知る〜比べる</span></div>
+            <div class="map__track"><div class="map__bar map__bar--web"></div></div>
+          </div>
+          <div class="map__row">
+            <div class="map__name"><b aria-hidden="true">商</b>EC<span class="sr-only">サイト運営：比べる〜また選ぶ</span></div>
+            <div class="map__track"><div class="map__bar map__bar--ec"></div></div>
+          </div>
+          <div class="map__row">
+            <div class="map__name"><b aria-hidden="true">響</b>SNS<span class="sr-only">代行：知る〜また選ぶまで継続的に</span></div>
+            <div class="map__track"><div class="map__bar map__bar--sns"></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="map__note reveal">WEBで見つけてもらい、ECで迷わず買ってもらい、SNSで関係を続ける。一つだけでなく組み合わせることで、お客様との間合いを切らさない仕組みをつくります。</p>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="sec process" id="process" data-sec>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-glyph" aria-hidden="true">型</div>
+        <div>
+          <h2 class="sec-title">支援の進め方</h2>
+          <p class="sec-desc">どの事業でも、この四つの型で進めます。</p>
+        </div>
+      </div>
+      <!-- 要確認：実際の進行手順・期間に合わせて調整 -->
+      <ol class="steps reveal">
+        <li class="step">
+          <span class="step__no">01</span>
+          <h3 class="step__verb">見極める</h3>
+          <p class="step__what">ヒアリング・現状分析</p>
+          <p>事業の強み、お客様像、今の数字をうかがい、課題を整理します。</p>
+        </li>
+        <li class="step">
+          <span class="step__no">02</span>
+          <h3 class="step__verb">構える</h3>
+          <p class="step__what">戦略・計画づくり</p>
+          <p>目標と予算に合わせて、優先すべき施策と進め方を決めます。</p>
+        </li>
+        <li class="step">
+          <span class="step__no">03</span>
+          <h3 class="step__verb">打ち込む</h3>
+          <p class="step__what">施策の実行</p>
+          <p>サイト改善、EC運営、SNS投稿などを計画に沿って実行します。</p>
+        </li>
+        <li class="step">
+          <span class="step__no">04</span>
+          <h3 class="step__verb">研ぎ澄ます</h3>
+          <p class="step__what">検証・改善</p>
+          <p>結果を数字で振り返り、効いた手を伸ばし、効かない手を改めます。</p>
+        </li>
+      </ol>
+      <p class="steps__loop reveal">研ぎ澄ましたら、再び見極めへ。この繰り返しで、施策の切れ味を保ちます。</p>
+    </div>
+  </section>
+
+  <!-- ===== MESSAGE ===== -->
+  <section class="sec message" id="message" data-sec>
+    <div class="wrap">
+      <div class="message__grid">
+        <div class="sec-head reveal">
+          <div class="sec-glyph" aria-hidden="true">志</div>
+          <div>
+            <h2 class="sec-title">代表挨拶</h2>
+          </div>
+        </div>
+        <!-- 要確認：以下は代表メッセージの【下書き】です。武田様ご本人による確認・修正・承認を経てから公開してください -->
+        <div class="message__body reveal">
+          <p class="message__lead">小さな事業にこそ、<br>鋭い一手を。</p>
+          <p>インターネットは、事業の規模に関係なく、お客様と出会える場所です。けれど実際には、何から手をつければよいか分からないまま、時間と費用だけがかかってしまう方も少なくありません。</p>
+          <p>私たちが大切にしているのは、手数の多さではなく、打つべき一手を見極めることです。数字に誠実に向き合い、決めたことはやり切る。その積み重ねが、事業を前へ進める力になると信じています。</p>
+          <p>お客様の事業を自分ごととして捉え、共に考え、共に動く。そんな伴走者でありたいと考えています。</p>
+          <p class="message__sign">合同会社サムライスフィールド　代表社員<b>武田 俊一郎</b></p>
+          <!-- 要確認：役職表記（代表社員／代表など） -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPANY ===== -->
+  <section class="sec company" id="company" data-sec>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-glyph" aria-hidden="true">名</div>
+        <div>
+          <h2 class="sec-title">会社概要</h2>
+        </div>
+      </div>
+      <table class="profile reveal">
+        <tbody>
+          <tr><th scope="row">商号</th><td>合同会社サムライスフィールド</td></tr>
+          <tr><th scope="row">代表者</th><td>代表社員　武田 俊一郎<!-- 要確認：役職表記 --></td></tr>
+          <tr><th scope="row">所在地</th><td>〒678-0212<br>兵庫県赤穂市清水町9-41</td></tr>
+          <!-- 要確認：設立年月日（未確認のため非表示）
+          <tr><th scope="row">設立</th><td>――年――月――日</td></tr>
+          -->
+          <!-- 要確認：資本金（未確認のため非表示）
+          <tr><th scope="row">資本金</th><td>――万円</td></tr>
+          -->
+          <tr>
+            <th scope="row">事業内容</th>
+            <td>
+              <ul>
+                <li>WEBマーケティング支援、アドバイス</li>
+                <li>ECサイト運営、コンサルティング</li>
+                <li>SNS代行サービス</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__in">
+      <div>
+        <p class="footer__word">Samurai Sphere Field</p>
+        <p style="margin:0;font-size:.82rem;color:var(--toishi)">合同会社サムライスフィールド</p>
+      </div>
+      <nav aria-label="フッターメニュー">
+        <ul>
+          <li><a href="#concept">間合い</a></li>
+          <li><a href="#services">事業内容</a></li>
+          <li><a href="#process">進め方</a></li>
+          <li><a href="#message">代表挨拶</a></li>
+          <li><a href="#company">会社概要</a></li>
+          <!-- 要確認：プライバシーポリシー／特定商取引法に基づく表記ページを用意する場合はここにリンク追加 -->
+        </ul>
+      </nav>
+    </div>
+    <p class="copy">&copy; <span id="year">2026</span> Samurai Sphere Field LLC.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----- Header state ----- */
+  var header = document.getElementById('header');
+  var blade = document.getElementById('blade');
+  function onScroll(){
+    var y = window.scrollY;
+    header.classList.toggle('is-scrolled', y > 40);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
+    blade.style.transform = 'scaleY(' + p.toFixed(4) + ')';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ----- Mobile menu ----- */
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('gnav');
+  function setMenu(open){
+    nav.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    document.body.style.overflow = open ? 'hidden' : '';
+    if(open){ var f = nav.querySelector('a'); if(f) f.focus(); }
+  }
+  btn.addEventListener('click', function(){ setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+  nav.addEventListener('click', function(e){ if(e.target.closest('a') && nav.classList.contains('is-open')) setMenu(false); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && nav.classList.contains('is-open')){ setMenu(false); btn.focus(); }
+  });
+
+  /* ----- Reveal ----- */
+  var targets = document.querySelectorAll('.reveal, #map');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.18, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(t){ io.observe(t); });
+  } else {
+    targets.forEach(function(t){ t.classList.add('is-in'); });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ----- Hero：鋼の球（Sphere）と一閃 ----- */
+  var cv = document.getElementById('sphere');
+  var ctx = cv.getContext('2d');
+  var W, H, DPR, R, cx, cy;
+  var N = 520, pts = [];
+  var golden = Math.PI * (3 - Math.sqrt(5));
+  for(var i = 0; i < N; i++){
+    var y = 1 - (i / (N - 1)) * 2;
+    var r = Math.sqrt(1 - y * y);
+    var th = golden * i;
+    pts.push({x:Math.cos(th) * r, y:y, z:Math.sin(th) * r, g:0});
+  }
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    var mobile = W < 640;
+    R = Math.min(W, H) * (mobile ? .40 : .34);
+    cx = mobile ? W * .55 : W * .52;
+    cy = mobile ? H * .34 : H * .47;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var rotY = 0, tiltX = -.35, tx = 0, ty = 0;
+  window.addEventListener('pointermove', function(e){
+    tx = (e.clientX / window.innerWidth - .5) * .5;
+    ty = (e.clientY / window.innerHeight - .5) * .3;
+  }, {passive:true});
+
+  // 一閃（ロード時に一度だけ）
+  var slashStart = null, SLASH_DUR = 900;
+  var sx1, sy1, sx2, sy2;
+  function slashLine(){
+    sx1 = cx - R * 1.9; sy1 = cy + R * 1.25;
+    sx2 = cx + R * 1.9; sy2 = cy - R * 1.25;
+  }
+
+  function draw(t){
+    ctx.clearRect(0, 0, W, H);
+    slashLine();
+    var cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+    var ax = tiltX, cosX = Math.cos(ax), sinX = Math.sin(ax);
+
+    // 間合いの輪（外周リング）
+    ctx.strokeStyle = 'rgba(195,163,106,.28)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, R * 1.28, 0, Math.PI * 2); ctx.stroke();
+    ctx.setLineDash([2, 7]);
+    ctx.strokeStyle = 'rgba(221,226,230,.16)';
+    ctx.beginPath(); ctx.arc(cx, cy, R * 1.55, 0, Math.PI * 2); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 一閃の進行
+    var prog = 1;
+    if(slashStart !== null){ prog = Math.min(1, (t - slashStart) / SLASH_DUR); }
+    var ease = 1 - Math.pow(1 - prog, 3);
+    var headX = sx1 + (sx2 - sx1) * ease, headY = sy1 + (sy2 - sy1) * ease;
+    var dx = sx2 - sx1, dy = sy2 - sy1, len = Math.hypot(dx, dy);
+
+    for(var i = 0; i < N; i++){
+      var p = pts[i];
+      var x = p.x * cosY - p.z * sinY;
+      var z = p.x * sinY + p.z * cosY;
+      var y2 = p.y * cosX - z * sinX;
+      var z2 = p.y * sinX + z * cosX;
+      var persp = 2.6 / (2.6 + z2);
+      var px = cx + x * R * persp, py = cy + y2 * R * persp;
+      var depth = (1 - z2) / 2; // 手前=1
+      // 刃が通過した点を光らせる
+      if(prog < 1){
+        var along = ((px - sx1) * dx + (py - sy1) * dy) / (len * len);
+        var dist = Math.abs((px - sx1) * dy - (py - sy1) * dx) / len;
+        if(dist < 26 && along <= ease && along > ease - .12) p.g = 1;
+      }
+      p.g *= .965;
+      var a = .12 + depth * .6 + p.g * .5;
+      var s = .6 + depth * 1.5 + p.g * 1.2;
+      ctx.fillStyle = p.g > .05
+        ? 'rgba(236,222,190,' + Math.min(1, a) + ')'
+        : 'rgba(221,226,230,' + a + ')';
+      ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill();
+    }
+
+    // 刃筋
+    var grad = ctx.createLinearGradient(sx1, sy1, headX, headY);
+    grad.addColorStop(0, 'rgba(221,226,230,0)');
+    grad.addColorStop(.75, 'rgba(221,226,230,' + (prog < 1 ? .5 : .14) + ')');
+    grad.addColorStop(1, 'rgba(255,255,255,' + (prog < 1 ? .95 : .22) + ')');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = prog < 1 ? 2 : 1;
+    ctx.beginPath(); ctx.moveTo(sx1, sy1); ctx.lineTo(headX, headY); ctx.stroke();
+  }
+
+  if(reduce){
+    draw(0);
+    window.addEventListener('resize', function(){ draw(0); });
+  } else {
+    var visible = true;
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }).observe(cv);
+    }
+    var last = performance.now();
+    (function loop(t){
+      requestAnimationFrame(loop);
+      if(!visible) return;
+      if(slashStart === null && t > 700) slashStart = t;
+      var dt = Math.min(50, t - last); last = t;
+      rotY += dt * .00012 + (tx * .002);
+      tiltX += ((-.35 + ty) - tiltX) * .02;
+      draw(t);
+    })(last);
+  }
+})();
+</script>
+</body>
+</html>
